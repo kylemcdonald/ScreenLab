@@ -42,8 +42,8 @@ public:
 		light.enable();
 		
 		vector<ofVec2f> points;
-		float minDistance = 100;
-		for(int i = 0; i < 64; i++) {
+		float minDistance = 10;
+		for(int i = 0; i < 640; i++) {
 			bool good = false;
 			while(!good) {
 				ofVec2f cur(ofRandomWidth(), ofRandomHeight());
