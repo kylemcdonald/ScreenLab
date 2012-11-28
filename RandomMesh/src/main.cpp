@@ -1,6 +1,7 @@
 #include "ofAppGlutWindow.h"
 #include "ofMain.h"
 
+#include "Stepping.h"
 #include "ofxDelaunay.h"
 #include "ofMeshUtils.h"
 
@@ -24,6 +25,8 @@ public:
 	ofMesh triangles, subtriangles;
 	vector<int> tops;
 	
+	Stepping stepping;
+	
 	MapType& get(vector<MapType>& data, int x, int y) {
 		return data.at(y * width + x);
 	}
@@ -42,8 +45,9 @@ public:
 		light.enable();
 		
 		vector<ofVec2f> points;
-		float minDistance = 10;
-		for(int i = 0; i < 640; i++) {
+		int pointCount = 800;
+		float minDistance = .5 * sqrt((ofGetWidth() * ofGetHeight()) / pointCount);
+		for(int i = 0; i < pointCount; i++) {
 			bool good = false;
 			while(!good) {
 				ofVec2f cur(ofRandomWidth(), ofRandomHeight());
@@ -115,6 +119,11 @@ public:
 	}
 	
 	void update() {
+		stepping.update();
+		if(stepping.isFrameNew()) {
+			disturb(stepping.footstep.x / scaleFactor, stepping.footstep.y / scaleFactor, 8);
+		}
+	
 		propagate();
 		drawRipples();
 		
@@ -179,6 +188,7 @@ public:
 		out.draw(0, 0, ofGetWidth(), ofGetHeight());
 		
 		cam.begin();
+		ofRotateY(ofGetElapsedTimef() * 5);
 		ofRotateX(-45);
 		ofTranslate(-ofGetWidth() / 2, -ofGetHeight() / 2);
 		ofSetColor(255);
@@ -195,15 +205,11 @@ public:
 		triangles.drawWireframe();
 		cam.end();
 	}
-	
-	void mouseMoved(int x, int y) {
-		disturb(x / scaleFactor, y / scaleFactor, 8);
-	}
 };
 
 int main() {
 	ofAppGlutWindow window;
 	window.setGlutDisplayString("rgba double samples>=4 depth");
-	ofSetupOpenGL(&window, 1280, 720, OF_WINDOW);
+	ofSetupOpenGL(&window, 1024, 1024, OF_WINDOW);
 	ofRunApp(new ofApp());
 }

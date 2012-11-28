@@ -62,6 +62,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		273EE28E1666402D00D68CC3 /* Stepping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stepping.h; path = src/Stepping.h; sourceTree = SOURCE_ROOT; };
 		27E3D2FB16651DA20058936A /* Delaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Delaunay.cpp; path = ofxDelaunay/libs/Delaunay/Delaunay.cpp; sourceTree = SOURCE_ROOT; };
 		27E3D2FC16651DA20058936A /* Delaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Delaunay.h; path = ofxDelaunay/libs/Delaunay/Delaunay.h; sourceTree = SOURCE_ROOT; };
 		27E3D2FF16651DA20058936A /* ofxDelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxDelaunay.cpp; path = ofxDelaunay/src/ofxDelaunay.cpp; sourceTree = SOURCE_ROOT; };
@@ -229,6 +230,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				273EE28E1666402D00D68CC3 /* Stepping.h */,
 				27E3D39C166522550058936A /* ofMeshUtils.cpp */,
 				27E3D39D166522550058936A /* ofMeshUtils.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
