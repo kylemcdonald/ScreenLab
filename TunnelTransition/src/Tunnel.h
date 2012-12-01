@@ -21,10 +21,14 @@ public:
 	rotationAmount,
 	moveSpeed,
 	lerpViewRate;
+	bool
+	useTriangles;
 	
 	Tunnel();
 	
 	void setup();
+	void update();
 	void draw();
+	void randomize();
 	ofVec3f getOrientation(float t);
 };

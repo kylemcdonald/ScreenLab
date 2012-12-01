@@ -33,7 +33,8 @@ Tunnel::Tunnel()
 ,rotationChange(.01)
 ,rotationAmount(10)
 ,moveSpeed(2500)
-,lerpViewRate(.05) {
+,lerpViewRate(.05)
+,useTriangles(false) {
 }
 
 void Tunnel::setup() {
@@ -47,18 +48,23 @@ void Tunnel::setup() {
 		cameraPath.push_back(mat);
 		
 		for(int j = 0; j < circleResolution; j++) {			
-			float theta0 = ofMap(j + 0, 0, circleResolution - 1, 0, TWO_PI);
-			float theta1 = ofMap(j + 1, 0, circleResolution - 1, 0, TWO_PI);
+			float theta0 = ofMap(j + 0, 0, circleResolution, 0, TWO_PI);
+			float theta1 = ofMap(j + 1, 0, circleResolution, 0, TWO_PI);
 			ofVec3f v0(cos(theta0), sin(theta0), 0);
 			ofVec3f v1(cos(theta1), sin(theta1), 0);
 			v0 *= tunnelRadius;
 			v1 *= tunnelRadius;
 			mesh.addVertex((v0) * mat);
 			mesh.addVertex((v1) * mat);
-			mesh.addVertex((v0) * mat);
-			mesh.addVertex((segmentOffset + v0) * mat);
-			mesh.addVertex((segmentOffset + v0) * mat);
-			mesh.addVertex((segmentOffset + v1) * mat);
+			if(useTriangles) {
+				mesh.addVertex((v0) * mat);
+				mesh.addVertex((segmentOffset + v1) * mat);
+			} else {
+				mesh.addVertex((v0) * mat);
+				mesh.addVertex((segmentOffset + v0) * mat);
+				mesh.addVertex((segmentOffset + v0) * mat);
+				mesh.addVertex((segmentOffset + v1) * mat);
+			}
 		}
 		
 		ofVec3f orientation = getOrientation(rotationChange * i);
@@ -69,9 +75,7 @@ void Tunnel::setup() {
 	}
 }
 
-void Tunnel::draw() {
-	ofNoFill();
-	
+void Tunnel::update() {
 	float t = ofGetElapsedTimef() * moveSpeed / tunnelSeparation;
 	float remainder = fmodf(t, 1);
 	ofMatrix4x4 curView = cameraPath[((int) t) % cameraPath.size()];
@@ -79,6 +83,10 @@ void Tunnel::draw() {
 	ofMatrix4x4 lerpView = lerp(curView, nextView, remainder);
 	
 	lerpCamera = lerp(lerpCamera, lerpView, lerpViewRate);
+}
+
+void Tunnel::draw() {
+	ofNoFill();
 	
 	enableFog(fogNear, fogFar);
 	ofScale(1, 1, -1);
@@ -92,6 +100,16 @@ void Tunnel::draw() {
 	ofPopStyle();
 	
 	disableFog();
+}
+
+void Tunnel::randomize() {
+	circleResolution = ofRandom(1, 30);
+	tunnelSeparation = ofRandom(10, 1000);
+	tunnelRadius = ofRandom(100, 1000);
+	rotationChange = ofRandom(0, .1);
+	rotationAmount = ofRandom(0, 45);
+	moveSpeed = ofRandom(0, 5000);
+	useTriangles= ofRandomf() > .5;
 }
 
 ofVec3f Tunnel::getOrientation(float t) {

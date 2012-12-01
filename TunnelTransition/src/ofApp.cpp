@@ -13,12 +13,14 @@ void ofApp::setup() {
 	gui.addSlider("circleResolution", tunnel.circleResolution, 1, 30, true);
 	gui.addSlider("fogNear", tunnel.fogNear, 0, 1000);
 	gui.addSlider("fogFar", tunnel.fogFar, 0, 4000);
-	gui.addSlider("tunnelSeparation", tunnel.tunnelSeparation, 0, 1000);
-	gui.addSlider("tunnelRadius", tunnel.tunnelRadius, 0, 1000);
+	gui.addSlider("tunnelSeparation", tunnel.tunnelSeparation, 10, 1000);
+	gui.addSlider("tunnelRadius", tunnel.tunnelRadius, 100, 1000);
 	gui.addSlider("rotationChange", tunnel.rotationChange, 0, .1);
 	gui.addSlider("rotationAmount", tunnel.rotationAmount, 0, 45);
 	gui.addSlider("moveSpeed", tunnel.moveSpeed, 0, 5000);
 	gui.addSlider("lerpViewRate", tunnel.lerpViewRate, 0, .1);
+	gui.addToggle("useTriangles", tunnel.useTriangles);
+	gui.addToggle("randomize", false);
 }
 
 void ofApp::update() {
@@ -33,9 +35,15 @@ void ofApp::update() {
 		tunnel.rotationAmount = _("rotationAmount");
 		tunnel.moveSpeed = _("moveSpeed");
 		tunnel.lerpViewRate = _("lerpViewRate");
+		tunnel.useTriangles = _("useTriangles");
+		if(_("randomize")) {
+			gui.setValueB("randomize", false);
+			tunnel.randomize();
+		}
 		tunnel.setup();
 		gui.clearAllChanged();
 	}
+	tunnel.update();
 }
 
 void ofApp::draw() {
