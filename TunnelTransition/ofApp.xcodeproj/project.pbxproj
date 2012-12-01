@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		279F0E1D166AA6F900386F4E /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 279F0E1C166AA6F900386F4E /* ofApp.cpp */; };
+		279F0E20166AAABC00386F4E /* Tunnel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 279F0E1F166AAABC00386F4E /* Tunnel.cpp */; };
 		27AD2BA316689EE800D525B5 /* guiBaseObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27AD2B5F16689EE800D525B5 /* guiBaseObject.cpp */; };
 		27AD2BA416689EE800D525B5 /* guiCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27AD2B6116689EE800D525B5 /* guiCallback.cpp */; };
 		27AD2BA516689EE800D525B5 /* guiCallbackValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27AD2B6316689EE800D525B5 /* guiCallbackValue.cpp */; };
@@ -90,6 +92,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		279F0E1B166AA6F900386F4E /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofApp.h; sourceTree = "<group>"; };
+		279F0E1C166AA6F900386F4E /* ofApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofApp.cpp; sourceTree = "<group>"; };
+		279F0E1E166AAABC00386F4E /* Tunnel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tunnel.h; sourceTree = "<group>"; };
+		279F0E1F166AAABC00386F4E /* Tunnel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tunnel.cpp; sourceTree = "<group>"; };
 		27AD2B5F16689EE800D525B5 /* guiBaseObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = guiBaseObject.cpp; path = ../../../addons/ofxControlPanel/src/guiBaseObject.cpp; sourceTree = SOURCE_ROOT; };
 		27AD2B6016689EE800D525B5 /* guiBaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = guiBaseObject.h; path = ../../../addons/ofxControlPanel/src/guiBaseObject.h; sourceTree = SOURCE_ROOT; };
 		27AD2B6116689EE800D525B5 /* guiCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = guiCallback.cpp; path = ../../../addons/ofxControlPanel/src/guiCallback.cpp; sourceTree = SOURCE_ROOT; };
@@ -388,6 +394,10 @@
 			isa = PBXGroup;
 			children = (
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
+				279F0E1B166AA6F900386F4E /* ofApp.h */,
+				279F0E1E166AAABC00386F4E /* Tunnel.h */,
+				279F0E1F166AAABC00386F4E /* Tunnel.cpp */,
+				279F0E1C166AA6F900386F4E /* ofApp.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -516,6 +526,8 @@
 				27AD2BBF16689EE800D525B5 /* tinyxmlerror.cpp in Sources */,
 				27AD2BC016689EE800D525B5 /* tinyxmlparser.cpp in Sources */,
 				27AD2BC116689EE800D525B5 /* ofxXmlSettings.cpp in Sources */,
+				279F0E1D166AA6F900386F4E /* ofApp.cpp in Sources */,
+				279F0E20166AAABC00386F4E /* Tunnel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
