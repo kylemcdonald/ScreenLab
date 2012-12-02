@@ -1,19 +1,5 @@
 #include "Tunnel.h"
 
-void enableFog(float near, float far) {
-	glEnable(GL_FOG);
-	glFogi(GL_FOG_MODE, GL_LINEAR);
-	GLfloat fogColor[4]= {0, 0, 0, 1};
-	glFogfv(GL_FOG_COLOR, fogColor);
-	glHint(GL_FOG_HINT, GL_FASTEST);
-	glFogf(GL_FOG_START, near);
-	glFogf(GL_FOG_END, far);
-}
-
-void disableFog() {
-	glDisable(GL_FOG);
-}
-
 ofMatrix4x4 lerp(ofMatrix4x4& a, ofMatrix4x4& b, float t) {
 	ofQuaternion trot;
 	trot.slerp(t, a.getRotate(), b.getRotate());
@@ -26,6 +12,10 @@ ofMatrix4x4 lerp(ofMatrix4x4& a, ofMatrix4x4& b, float t) {
 Tunnel::Tunnel()
 :tunnelLength(256)
 ,circleResolution(21)
+,segmentSubdivision(4)
+,baseBlend(.8)
+,dissolveBlend(.1)
+,pulseBlend(.1)
 ,fogNear(400)
 ,fogFar(2500)
 ,tunnelSeparation(200)
@@ -35,37 +25,31 @@ Tunnel::Tunnel()
 ,moveSpeed(2500)
 ,lerpViewRate(.05)
 ,segmentTiming(.5)
+,randomDissolve(4.)
 ,useTriangles(false) {
 }
 
 void Tunnel::setup() {
+	shader.setup("shader");
+
 	cameraPath.clear();
 	mesh.clear();
 	mesh.setMode(OF_PRIMITIVE_LINES);
 	
 	ofVec3f segmentOffset(0, 0, tunnelSeparation);
 	ofMatrix4x4 mat, lerpMat;
+	
 	for(int i = 0; i < tunnelLength; i++) {
 		cameraPath.push_back(mat);
+		ofQuaternion rot = mat.getRotate();
 		
 		for(int j = 0; j < circleResolution; j++) {			
-			float theta0 = ofMap(j + 0, 0, circleResolution, 0, TWO_PI);
-			float theta1 = ofMap(j + 1, 0, circleResolution, 0, TWO_PI);
+			float theta0 = ofMap(j, 0, circleResolution, 0, TWO_PI);
 			ofVec3f v0(cos(theta0), sin(theta0), 0);
-			ofVec3f v1(cos(theta1), sin(theta1), 0);
 			v0 *= tunnelRadius;
-			v1 *= tunnelRadius;
-			mesh.addVertex((v0) * mat);
-			mesh.addVertex((v1) * mat);
-			if(useTriangles) {
-				mesh.addVertex((v0) * mat);
-				mesh.addVertex((segmentOffset + v1) * mat);
-			} else {
-				mesh.addVertex((v0) * mat);
-				mesh.addVertex((segmentOffset + v0) * mat);
-				mesh.addVertex((segmentOffset + v0) * mat);
-				mesh.addVertex((segmentOffset + v1) * mat);
-			}
+			mesh.addVertex(v0 * mat);
+			mesh.addTexCoord(ofVec2f(i, j));
+			mesh.addNormal(v0 * rot);
 		}
 		
 		ofVec3f orientation = getOrientation(rotationChange * i);
@@ -74,36 +58,57 @@ void Tunnel::setup() {
 		mat.glRotate(orientation.y, 0, 1, 0);
 		mat.glRotate(orientation.z, 0, 0, 1);
 	}
+	
+	for(int i = 0; i < tunnelLength - 1; i++) {
+		for(int j = 0; j < circleResolution; j++) {
+			mesh.addIndex(i * circleResolution + j);
+			mesh.addIndex(i * circleResolution + (j + 1) % circleResolution);
+			mesh.addIndex(i * circleResolution + j);
+			mesh.addIndex((i + 1) * circleResolution + j);
+			if(useTriangles) {
+				mesh.addIndex(i * circleResolution + j);
+				mesh.addIndex((i + 1) * circleResolution + (j + 1) % circleResolution);
+			}
+		}
+	}
 }
 
 void Tunnel::update() {
-	float t = ofGetElapsedTimef() * moveSpeed / tunnelSeparation;
-	float remainder = fmodf(t, 1);
-	ofMatrix4x4 curView = cameraPath[((int) t) % cameraPath.size()];
-	ofMatrix4x4 nextView = cameraPath[((int) t + 1) % cameraPath.size()];
+	updateTime = ofGetElapsedTimef();
+	float segmentPosition = updateTime * moveSpeed / tunnelSeparation;
+	float remainder = fmodf(segmentPosition, 1);
+	ofMatrix4x4 curView = cameraPath[((int) segmentPosition) % cameraPath.size()];
+	ofMatrix4x4 nextView = cameraPath[((int) segmentPosition + 1) % cameraPath.size()];
 	ofMatrix4x4 lerpView = lerp(curView, nextView, remainder);
 	lerpCamera = lerp(lerpCamera, lerpView, lerpViewRate);
-	if(floor(t + segmentTiming) != floor(lastt + segmentTiming)) {
+	if(floor(segmentPosition / segmentSubdivision + segmentTiming) !=
+			floor(lastSegmentPosition / segmentSubdivision + segmentTiming)) {
 		newSegment = true;
 	}
-	lastt = t;
+	lastSegmentPosition = segmentPosition;
 }
 
 void Tunnel::draw() {
 	ofNoFill();
 	
-	enableFog(fogNear, fogFar);
 	ofScale(1, 1, -1);
 	
 	ofPushStyle();
 	ofSetLineWidth(3);
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
-	ofSetColor(255, 190);
 	ofMultMatrix(lerpCamera.getInverse());
+	shader.begin();
+	shader.setUniform1f("time", updateTime);
+	shader.setUniform1f("baseBlend", baseBlend);
+	shader.setUniform1f("dissolveBlend", dissolveBlend);
+	shader.setUniform1f("pulseBlend", pulseBlend);
+	shader.setUniform1f("fogNear", fogNear);
+	shader.setUniform1f("fogFar", fogFar);
+	shader.setUniform1f("randomDissolve", randomDissolve);
+	shader.setUniform1i("segmentSubdivision", segmentSubdivision);
 	mesh.draw();
+	shader.end();
 	ofPopStyle();
-	
-	disableFog();
 }
 
 void Tunnel::randomize() {

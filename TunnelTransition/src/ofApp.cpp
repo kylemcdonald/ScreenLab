@@ -9,10 +9,14 @@ void ofApp::setup() {
 	
 	midi.openPort("IAC Driver Bus 1");
 	
-	gui.setup(250, 700);
+	gui.setup(250, 900);
 	gui.addPanel("Settings");
 	gui.addSlider("tunnelLength", tunnel.tunnelLength, 0, 512, true);
 	gui.addSlider("circleResolution", tunnel.circleResolution, 1, 30, true);
+	gui.addSlider("segmentSubdivision", tunnel.segmentSubdivision, 1, 12, true);
+	gui.addSlider("baseBlend", tunnel.baseBlend, 0, 1);
+	gui.addSlider("dissolveBlend", tunnel.dissolveBlend, 0, 1);
+	gui.addSlider("pulseBlend", tunnel.pulseBlend, 0, 1);
 	gui.addSlider("fogNear", tunnel.fogNear, 0, 1000);
 	gui.addSlider("fogFar", tunnel.fogFar, 0, 4000);
 	gui.addSlider("tunnelSeparation", tunnel.tunnelSeparation, 10, 1000);
@@ -22,6 +26,7 @@ void ofApp::setup() {
 	gui.addSlider("moveSpeed", tunnel.moveSpeed, 0, 5000);
 	gui.addSlider("lerpViewRate", tunnel.lerpViewRate, 0, .1);
 	gui.addSlider("segmentTiming", tunnel.segmentTiming, 0, 1);
+	gui.addSlider("randomDissolve", tunnel.randomDissolve, 0, 10);
 	gui.addToggle("useTriangles", tunnel.useTriangles);
 	gui.addToggle("randomize", false);
 }
@@ -30,6 +35,10 @@ void ofApp::update() {
 	if(gui.hasValueChangedInPanel("Settings")) {
 		tunnel.tunnelLength = _("tunnelLength");
 		tunnel.circleResolution = _("circleResolution");
+		tunnel.segmentSubdivision = _("segmentSubdivision");
+		tunnel.baseBlend = _("baseBlend");
+		tunnel.dissolveBlend = _("dissolveBlend");
+		tunnel.pulseBlend = _("pulseBlend");
 		tunnel.fogNear = _("fogNear");
 		tunnel.fogFar = _("fogFar");
 		tunnel.tunnelSeparation = _("tunnelSeparation");
@@ -39,6 +48,7 @@ void ofApp::update() {
 		tunnel.moveSpeed = _("moveSpeed");
 		tunnel.lerpViewRate = _("lerpViewRate");
 		tunnel.segmentTiming = _("segmentTiming");
+		tunnel.randomDissolve = _("randomDissolve");
 		tunnel.useTriangles = _("useTriangles");
 		if(_("randomize")) {
 			gui.setValueB("randomize", false);

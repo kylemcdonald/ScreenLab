@@ -101,6 +101,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		275000B1166BCA6B00B01669 /* ofAutoShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofAutoShader.h; path = src/ofAutoShader.h; sourceTree = SOURCE_ROOT; };
 		279F0E1B166AA6F900386F4E /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofApp.h; sourceTree = "<group>"; };
 		279F0E1C166AA6F900386F4E /* ofApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofApp.cpp; sourceTree = "<group>"; };
 		279F0E1E166AAABC00386F4E /* Tunnel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tunnel.h; sourceTree = "<group>"; };
@@ -480,6 +481,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				275000B1166BCA6B00B01669 /* ofAutoShader.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				279F0E1B166AA6F900386F4E /* ofApp.h */,
 				279F0E1E166AAABC00386F4E /* Tunnel.h */,

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofAutoShader.h"
 
 class Tunnel {
 protected:
@@ -8,15 +9,21 @@ protected:
 	vector<ofMatrix4x4> cameraPath;
 	ofMatrix4x4 lerpCamera;
 	bool newSegment;
-	float lastt;
+	float updateTime, lastSegmentPosition;
+	
+	ofAutoShader shader;
 	
 	ofVec3f getOrientation(float t);
 
 public:
 	int
 	tunnelLength,
-	circleResolution;
+	circleResolution,
+	segmentSubdivision;
 	float 
+	baseBlend,
+	dissolveBlend,
+	pulseBlend,
 	fogNear,
 	fogFar,
 	tunnelSeparation,
@@ -25,7 +32,8 @@ public:
 	rotationAmount,
 	moveSpeed,
 	lerpViewRate,
-	segmentTiming;
+	segmentTiming,
+	randomDissolve;
 	bool
 	useTriangles;
 	
