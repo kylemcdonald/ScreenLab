@@ -1,8 +1,14 @@
 #include "ofAppGlutWindow.h"
 #include "ofMain.h"
 
+class Meteorite {
+	
+};
+
 class Particle {
 protected:
+	ofVboMesh* mesh;
+	
 	ofVec3f rotationAxis;
 	float rotation, rotationSpeed;
 	
@@ -10,8 +16,15 @@ protected:
 	ofVec3f position, velocity;
 	float size;
 	
+	int iteration;
+	
 public:
-	void setup() {
+	Particle()
+	:iteration(0) {
+	}
+	
+	void setup(ofVboMesh& mesh) {
+		this->mesh = &mesh;
 		rotationAxis.set(ofRandomf(), ofRandomf(), ofRandomf());
 		position.set(200, 0, 0);
 		velocity.set(ofRandomf(), ofRandomf(), ofRandomf());
@@ -24,12 +37,20 @@ public:
 		divergence *= .001;
 	}
 	
-	void update() {
+	void update(float t) {
+		rotation = rotationSpeed * t;
+		int targetIteration = 60 * t;
+		while(iteration < targetIteration) {
+			iterativeUpdate();
+			iteration++;
+		}
+	}
+	
+	void iterativeUpdate() {
 		float distance = position.length();
 		if(distance > 1600) {
-			setup();
+			setup(*mesh);
 		} else {
-			rotation = rotationSpeed * ofGetElapsedTimef();
 			velocity += gravity;
 			velocity += divergence * distance;
 			position += velocity;
@@ -37,10 +58,14 @@ public:
 		}
 	}
 	
-	void applyTransform() {
+	void draw() {
+		ofPushMatrix();
 		ofTranslate(position);
 		ofRotate(rotation, rotationAxis.x, rotationAxis.y, rotationAxis.z);
 		ofScale(size, size, size);
+		ofRotateX(-43);
+		mesh->draw();
+		ofPopMatrix();
 	}	
 };
 
@@ -79,13 +104,14 @@ public:
 		tetrahedron = buildTetrahedron(OF_PRIMITIVE_LINES);
 		particles.resize(1024);
 		for(int i = 0; i < particles.size(); i++) {
-			particles[i].setup();
+			particles[i].setup(tetrahedron);
 		}
 	}
 	
 	void update() {
+		float t = ofGetElapsedTimef();
 		for(int i = 0; i < particles.size(); i++) {
-			particles[i].update();
+			particles[i].update(t);
 		}
 	}
 	
@@ -114,11 +140,7 @@ public:
 		
 		ofSetLineWidth(3);
 		for(int i = 0; i < particles.size(); i++) {
-			ofPushMatrix();
-			particles[i].applyTransform();
-			ofRotateX(-43);
-			tetrahedron.draw();
-			ofPopMatrix();
+			particles[i].draw();
 		}
 		cam.end();
 	}
