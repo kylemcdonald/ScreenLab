@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		27E3D30116651DA20058936A /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27E3D2FB16651DA20058936A /* Delaunay.cpp */; };
-		27E3D30216651DA20058936A /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27E3D2FF16651DA20058936A /* ofxDelaunay.cpp */; };
+		2710F147166C179B00DEFE1D /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2710F141166C179B00DEFE1D /* Delaunay.cpp */; };
+		2710F148166C179B00DEFE1D /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2710F145166C179B00DEFE1D /* ofxDelaunay.cpp */; };
 		27E3D39E166522550058936A /* ofMeshUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27E3D39C166522550058936A /* ofMeshUtils.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworks.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworks.a */; };
@@ -62,11 +62,34 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2710F11C166C179A00DEFE1D /* config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = config; path = ../../../addons/ofxDelaunay/.git/config; sourceTree = SOURCE_ROOT; };
+		2710F11D166C179B00DEFE1D /* description */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = description; path = ../../../addons/ofxDelaunay/.git/description; sourceTree = SOURCE_ROOT; };
+		2710F11E166C179B00DEFE1D /* HEAD */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = HEAD; path = ../../../addons/ofxDelaunay/.git/HEAD; sourceTree = SOURCE_ROOT; };
+		2710F120166C179B00DEFE1D /* applypatch-msg.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = "applypatch-msg.sample"; path = "../../../addons/ofxDelaunay/.git/hooks/applypatch-msg.sample"; sourceTree = SOURCE_ROOT; };
+		2710F121166C179B00DEFE1D /* commit-msg.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = "commit-msg.sample"; path = "../../../addons/ofxDelaunay/.git/hooks/commit-msg.sample"; sourceTree = SOURCE_ROOT; };
+		2710F122166C179B00DEFE1D /* post-commit.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = "post-commit.sample"; path = "../../../addons/ofxDelaunay/.git/hooks/post-commit.sample"; sourceTree = SOURCE_ROOT; };
+		2710F123166C179B00DEFE1D /* post-receive.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = "post-receive.sample"; path = "../../../addons/ofxDelaunay/.git/hooks/post-receive.sample"; sourceTree = SOURCE_ROOT; };
+		2710F124166C179B00DEFE1D /* post-update.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = "post-update.sample"; path = "../../../addons/ofxDelaunay/.git/hooks/post-update.sample"; sourceTree = SOURCE_ROOT; };
+		2710F125166C179B00DEFE1D /* pre-applypatch.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = "pre-applypatch.sample"; path = "../../../addons/ofxDelaunay/.git/hooks/pre-applypatch.sample"; sourceTree = SOURCE_ROOT; };
+		2710F126166C179B00DEFE1D /* pre-commit.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = "pre-commit.sample"; path = "../../../addons/ofxDelaunay/.git/hooks/pre-commit.sample"; sourceTree = SOURCE_ROOT; };
+		2710F127166C179B00DEFE1D /* pre-rebase.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = "pre-rebase.sample"; path = "../../../addons/ofxDelaunay/.git/hooks/pre-rebase.sample"; sourceTree = SOURCE_ROOT; };
+		2710F128166C179B00DEFE1D /* prepare-commit-msg.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = "prepare-commit-msg.sample"; path = "../../../addons/ofxDelaunay/.git/hooks/prepare-commit-msg.sample"; sourceTree = SOURCE_ROOT; };
+		2710F129166C179B00DEFE1D /* update.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = update.sample; path = ../../../addons/ofxDelaunay/.git/hooks/update.sample; sourceTree = SOURCE_ROOT; };
+		2710F12A166C179B00DEFE1D /* index */ = {isa = PBXFileReference; lastKnownFileType = file; name = index; path = ../../../addons/ofxDelaunay/.git/index; sourceTree = SOURCE_ROOT; };
+		2710F12C166C179B00DEFE1D /* exclude */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = exclude; path = ../../../addons/ofxDelaunay/.git/info/exclude; sourceTree = SOURCE_ROOT; };
+		2710F12E166C179B00DEFE1D /* HEAD */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = HEAD; path = ../../../addons/ofxDelaunay/.git/logs/HEAD; sourceTree = SOURCE_ROOT; };
+		2710F131166C179B00DEFE1D /* master */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = master; path = ../../../addons/ofxDelaunay/.git/logs/refs/heads/master; sourceTree = SOURCE_ROOT; };
+		2710F135166C179B00DEFE1D /* pack-6bb54327a02df17b7d1b5984577e3575f78446e5.idx */ = {isa = PBXFileReference; lastKnownFileType = file; name = "pack-6bb54327a02df17b7d1b5984577e3575f78446e5.idx"; path = "../../../addons/ofxDelaunay/.git/objects/pack/pack-6bb54327a02df17b7d1b5984577e3575f78446e5.idx"; sourceTree = SOURCE_ROOT; };
+		2710F136166C179B00DEFE1D /* pack-6bb54327a02df17b7d1b5984577e3575f78446e5.pack */ = {isa = PBXFileReference; lastKnownFileType = file; name = "pack-6bb54327a02df17b7d1b5984577e3575f78446e5.pack"; path = "../../../addons/ofxDelaunay/.git/objects/pack/pack-6bb54327a02df17b7d1b5984577e3575f78446e5.pack"; sourceTree = SOURCE_ROOT; };
+		2710F137166C179B00DEFE1D /* packed-refs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "packed-refs"; path = "../../../addons/ofxDelaunay/.git/packed-refs"; sourceTree = SOURCE_ROOT; };
+		2710F13A166C179B00DEFE1D /* master */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = master; path = ../../../addons/ofxDelaunay/.git/refs/heads/master; sourceTree = SOURCE_ROOT; };
+		2710F13D166C179B00DEFE1D /* HEAD */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = HEAD; path = ../../../addons/ofxDelaunay/.git/refs/remotes/origin/HEAD; sourceTree = SOURCE_ROOT; };
+		2710F141166C179B00DEFE1D /* Delaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Delaunay.cpp; path = ../../../addons/ofxDelaunay/libs/Delaunay/Delaunay.cpp; sourceTree = SOURCE_ROOT; };
+		2710F142166C179B00DEFE1D /* Delaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Delaunay.h; path = ../../../addons/ofxDelaunay/libs/Delaunay/Delaunay.h; sourceTree = SOURCE_ROOT; };
+		2710F143166C179B00DEFE1D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../../../addons/ofxDelaunay/README.md; sourceTree = SOURCE_ROOT; };
+		2710F145166C179B00DEFE1D /* ofxDelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxDelaunay.cpp; path = ../../../addons/ofxDelaunay/src/ofxDelaunay.cpp; sourceTree = SOURCE_ROOT; };
+		2710F146166C179B00DEFE1D /* ofxDelaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxDelaunay.h; path = ../../../addons/ofxDelaunay/src/ofxDelaunay.h; sourceTree = SOURCE_ROOT; };
 		273EE28E1666402D00D68CC3 /* Stepping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stepping.h; path = src/Stepping.h; sourceTree = SOURCE_ROOT; };
-		27E3D2FB16651DA20058936A /* Delaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Delaunay.cpp; path = ofxDelaunay/libs/Delaunay/Delaunay.cpp; sourceTree = SOURCE_ROOT; };
-		27E3D2FC16651DA20058936A /* Delaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Delaunay.h; path = ofxDelaunay/libs/Delaunay/Delaunay.h; sourceTree = SOURCE_ROOT; };
-		27E3D2FF16651DA20058936A /* ofxDelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxDelaunay.cpp; path = ofxDelaunay/src/ofxDelaunay.cpp; sourceTree = SOURCE_ROOT; };
-		27E3D30016651DA20058936A /* ofxDelaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxDelaunay.h; path = ofxDelaunay/src/ofxDelaunay.h; sourceTree = SOURCE_ROOT; };
 		27E3D39C166522550058936A /* ofMeshUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofMeshUtils.cpp; path = src/ofMeshUtils.cpp; sourceTree = SOURCE_ROOT; };
 		27E3D39D166522550058936A /* ofMeshUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofMeshUtils.h; path = src/ofMeshUtils.h; sourceTree = SOURCE_ROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -121,48 +144,207 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		27E3D2D316651DA10058936A /* ofxDelaunay */ = {
+		2710F119166C179A00DEFE1D /* ofxDelaunay */ = {
 			isa = PBXGroup;
 			children = (
-				27E3D2F916651DA20058936A /* libs */,
-				27E3D2FE16651DA20058936A /* src */,
+				2710F11A166C179A00DEFE1D /* .git */,
+				2710F13F166C179B00DEFE1D /* libs */,
+				2710F143166C179B00DEFE1D /* README.md */,
+				2710F144166C179B00DEFE1D /* src */,
 			);
-			path = ofxDelaunay;
+			name = ofxDelaunay;
+			path = ../../../addons/ofxDelaunay;
 			sourceTree = SOURCE_ROOT;
 		};
-		27E3D2F916651DA20058936A /* libs */ = {
+		2710F11A166C179A00DEFE1D /* .git */ = {
 			isa = PBXGroup;
 			children = (
-				27E3D2FA16651DA20058936A /* Delaunay */,
+				2710F11B166C179A00DEFE1D /* branches */,
+				2710F11C166C179A00DEFE1D /* config */,
+				2710F11D166C179B00DEFE1D /* description */,
+				2710F11E166C179B00DEFE1D /* HEAD */,
+				2710F11F166C179B00DEFE1D /* hooks */,
+				2710F12A166C179B00DEFE1D /* index */,
+				2710F12B166C179B00DEFE1D /* info */,
+				2710F12D166C179B00DEFE1D /* logs */,
+				2710F132166C179B00DEFE1D /* objects */,
+				2710F137166C179B00DEFE1D /* packed-refs */,
+				2710F138166C179B00DEFE1D /* refs */,
+			);
+			name = .git;
+			path = ../../../addons/ofxDelaunay/.git;
+			sourceTree = SOURCE_ROOT;
+		};
+		2710F11B166C179A00DEFE1D /* branches */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = branches;
+			path = ../../../addons/ofxDelaunay/.git/branches;
+			sourceTree = SOURCE_ROOT;
+		};
+		2710F11F166C179B00DEFE1D /* hooks */ = {
+			isa = PBXGroup;
+			children = (
+				2710F120166C179B00DEFE1D /* applypatch-msg.sample */,
+				2710F121166C179B00DEFE1D /* commit-msg.sample */,
+				2710F122166C179B00DEFE1D /* post-commit.sample */,
+				2710F123166C179B00DEFE1D /* post-receive.sample */,
+				2710F124166C179B00DEFE1D /* post-update.sample */,
+				2710F125166C179B00DEFE1D /* pre-applypatch.sample */,
+				2710F126166C179B00DEFE1D /* pre-commit.sample */,
+				2710F127166C179B00DEFE1D /* pre-rebase.sample */,
+				2710F128166C179B00DEFE1D /* prepare-commit-msg.sample */,
+				2710F129166C179B00DEFE1D /* update.sample */,
+			);
+			name = hooks;
+			path = ../../../addons/ofxDelaunay/.git/hooks;
+			sourceTree = SOURCE_ROOT;
+		};
+		2710F12B166C179B00DEFE1D /* info */ = {
+			isa = PBXGroup;
+			children = (
+				2710F12C166C179B00DEFE1D /* exclude */,
+			);
+			name = info;
+			path = ../../../addons/ofxDelaunay/.git/info;
+			sourceTree = SOURCE_ROOT;
+		};
+		2710F12D166C179B00DEFE1D /* logs */ = {
+			isa = PBXGroup;
+			children = (
+				2710F12E166C179B00DEFE1D /* HEAD */,
+				2710F12F166C179B00DEFE1D /* refs */,
+			);
+			name = logs;
+			path = ../../../addons/ofxDelaunay/.git/logs;
+			sourceTree = SOURCE_ROOT;
+		};
+		2710F12F166C179B00DEFE1D /* refs */ = {
+			isa = PBXGroup;
+			children = (
+				2710F130166C179B00DEFE1D /* heads */,
+			);
+			name = refs;
+			path = ../../../addons/ofxDelaunay/.git/logs/refs;
+			sourceTree = SOURCE_ROOT;
+		};
+		2710F130166C179B00DEFE1D /* heads */ = {
+			isa = PBXGroup;
+			children = (
+				2710F131166C179B00DEFE1D /* master */,
+			);
+			name = heads;
+			path = ../../../addons/ofxDelaunay/.git/logs/refs/heads;
+			sourceTree = SOURCE_ROOT;
+		};
+		2710F132166C179B00DEFE1D /* objects */ = {
+			isa = PBXGroup;
+			children = (
+				2710F133166C179B00DEFE1D /* info */,
+				2710F134166C179B00DEFE1D /* pack */,
+			);
+			name = objects;
+			path = ../../../addons/ofxDelaunay/.git/objects;
+			sourceTree = SOURCE_ROOT;
+		};
+		2710F133166C179B00DEFE1D /* info */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = info;
+			path = ../../../addons/ofxDelaunay/.git/objects/info;
+			sourceTree = SOURCE_ROOT;
+		};
+		2710F134166C179B00DEFE1D /* pack */ = {
+			isa = PBXGroup;
+			children = (
+				2710F135166C179B00DEFE1D /* pack-6bb54327a02df17b7d1b5984577e3575f78446e5.idx */,
+				2710F136166C179B00DEFE1D /* pack-6bb54327a02df17b7d1b5984577e3575f78446e5.pack */,
+			);
+			name = pack;
+			path = ../../../addons/ofxDelaunay/.git/objects/pack;
+			sourceTree = SOURCE_ROOT;
+		};
+		2710F138166C179B00DEFE1D /* refs */ = {
+			isa = PBXGroup;
+			children = (
+				2710F139166C179B00DEFE1D /* heads */,
+				2710F13B166C179B00DEFE1D /* remotes */,
+				2710F13E166C179B00DEFE1D /* tags */,
+			);
+			name = refs;
+			path = ../../../addons/ofxDelaunay/.git/refs;
+			sourceTree = SOURCE_ROOT;
+		};
+		2710F139166C179B00DEFE1D /* heads */ = {
+			isa = PBXGroup;
+			children = (
+				2710F13A166C179B00DEFE1D /* master */,
+			);
+			name = heads;
+			path = ../../../addons/ofxDelaunay/.git/refs/heads;
+			sourceTree = SOURCE_ROOT;
+		};
+		2710F13B166C179B00DEFE1D /* remotes */ = {
+			isa = PBXGroup;
+			children = (
+				2710F13C166C179B00DEFE1D /* origin */,
+			);
+			name = remotes;
+			path = ../../../addons/ofxDelaunay/.git/refs/remotes;
+			sourceTree = SOURCE_ROOT;
+		};
+		2710F13C166C179B00DEFE1D /* origin */ = {
+			isa = PBXGroup;
+			children = (
+				2710F13D166C179B00DEFE1D /* HEAD */,
+			);
+			name = origin;
+			path = ../../../addons/ofxDelaunay/.git/refs/remotes/origin;
+			sourceTree = SOURCE_ROOT;
+		};
+		2710F13E166C179B00DEFE1D /* tags */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = tags;
+			path = ../../../addons/ofxDelaunay/.git/refs/tags;
+			sourceTree = SOURCE_ROOT;
+		};
+		2710F13F166C179B00DEFE1D /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				2710F140166C179B00DEFE1D /* Delaunay */,
 			);
 			name = libs;
-			path = ofxDelaunay/libs;
+			path = ../../../addons/ofxDelaunay/libs;
 			sourceTree = SOURCE_ROOT;
 		};
-		27E3D2FA16651DA20058936A /* Delaunay */ = {
+		2710F140166C179B00DEFE1D /* Delaunay */ = {
 			isa = PBXGroup;
 			children = (
-				27E3D2FB16651DA20058936A /* Delaunay.cpp */,
-				27E3D2FC16651DA20058936A /* Delaunay.h */,
+				2710F141166C179B00DEFE1D /* Delaunay.cpp */,
+				2710F142166C179B00DEFE1D /* Delaunay.h */,
 			);
 			name = Delaunay;
-			path = ofxDelaunay/libs/Delaunay;
+			path = ../../../addons/ofxDelaunay/libs/Delaunay;
 			sourceTree = SOURCE_ROOT;
 		};
-		27E3D2FE16651DA20058936A /* src */ = {
+		2710F144166C179B00DEFE1D /* src */ = {
 			isa = PBXGroup;
 			children = (
-				27E3D2FF16651DA20058936A /* ofxDelaunay.cpp */,
-				27E3D30016651DA20058936A /* ofxDelaunay.h */,
+				2710F145166C179B00DEFE1D /* ofxDelaunay.cpp */,
+				2710F146166C179B00DEFE1D /* ofxDelaunay.h */,
 			);
 			name = src;
-			path = ofxDelaunay/src;
+			path = ../../../addons/ofxDelaunay/src;
 			sourceTree = SOURCE_ROOT;
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				27E3D2D316651DA10058936A /* ofxDelaunay */,
+				2710F119166C179A00DEFE1D /* ofxDelaunay */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -331,9 +513,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
-				27E3D30116651DA20058936A /* Delaunay.cpp in Sources */,
-				27E3D30216651DA20058936A /* ofxDelaunay.cpp in Sources */,
 				27E3D39E166522550058936A /* ofMeshUtils.cpp in Sources */,
+				2710F147166C179B00DEFE1D /* Delaunay.cpp in Sources */,
+				2710F148166C179B00DEFE1D /* ofxDelaunay.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
