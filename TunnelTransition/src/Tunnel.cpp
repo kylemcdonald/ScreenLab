@@ -34,6 +34,7 @@ Tunnel::Tunnel()
 ,rotationAmount(10)
 ,moveSpeed(2500)
 ,lerpViewRate(.05)
+,segmentTiming(.5)
 ,useTriangles(false) {
 }
 
@@ -81,8 +82,11 @@ void Tunnel::update() {
 	ofMatrix4x4 curView = cameraPath[((int) t) % cameraPath.size()];
 	ofMatrix4x4 nextView = cameraPath[((int) t + 1) % cameraPath.size()];
 	ofMatrix4x4 lerpView = lerp(curView, nextView, remainder);
-	
 	lerpCamera = lerp(lerpCamera, lerpView, lerpViewRate);
+	if(floor(t + segmentTiming) != floor(lastt + segmentTiming)) {
+		newSegment = true;
+	}
+	lastt = t;
 }
 
 void Tunnel::draw() {
@@ -107,8 +111,8 @@ void Tunnel::randomize() {
 	tunnelSeparation = ofRandom(10, 1000);
 	tunnelRadius = ofRandom(100, 1000);
 	rotationChange = ofRandom(0, .1);
-	rotationAmount = ofRandom(0, 45);
-	moveSpeed = ofRandom(0, 5000);
+	rotationAmount = ofRandom(0, 25);
+	moveSpeed = ofRandom(1000, 5000);
 	useTriangles= ofRandomf() > .5;
 }
 
@@ -130,4 +134,10 @@ ofVec3f Tunnel::getOrientation(float t) {
 		case 2: rotation.z = +rotationAmount; break;
 	}
 	return rotation;
+}
+
+bool Tunnel::isSegmentNew() {
+	bool curNewSegment = newSegment;
+	newSegment = false;
+	return curNewSegment;
 }

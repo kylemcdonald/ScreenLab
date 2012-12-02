@@ -7,6 +7,10 @@ protected:
 	ofVboMesh mesh;
 	vector<ofMatrix4x4> cameraPath;
 	ofMatrix4x4 lerpCamera;
+	bool newSegment;
+	float lastt;
+	
+	ofVec3f getOrientation(float t);
 
 public:
 	int
@@ -20,7 +24,8 @@ public:
 	rotationChange,
 	rotationAmount,
 	moveSpeed,
-	lerpViewRate;
+	lerpViewRate,
+	segmentTiming;
 	bool
 	useTriangles;
 	
@@ -30,5 +35,6 @@ public:
 	void update();
 	void draw();
 	void randomize();
-	ofVec3f getOrientation(float t);
+	
+	bool isSegmentNew();
 };

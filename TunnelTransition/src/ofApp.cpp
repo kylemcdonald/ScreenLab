@@ -7,6 +7,8 @@ float ofApp::_(string name) {
 void ofApp::setup() {
 	ofSetVerticalSync(true);
 	
+	midi.openPort("IAC Driver Bus 1");
+	
 	gui.setup(250, 700);
 	gui.addPanel("Settings");
 	gui.addSlider("tunnelLength", tunnel.tunnelLength, 0, 512, true);
@@ -19,6 +21,7 @@ void ofApp::setup() {
 	gui.addSlider("rotationAmount", tunnel.rotationAmount, 0, 45);
 	gui.addSlider("moveSpeed", tunnel.moveSpeed, 0, 5000);
 	gui.addSlider("lerpViewRate", tunnel.lerpViewRate, 0, .1);
+	gui.addSlider("segmentTiming", tunnel.segmentTiming, 0, 1);
 	gui.addToggle("useTriangles", tunnel.useTriangles);
 	gui.addToggle("randomize", false);
 }
@@ -35,6 +38,7 @@ void ofApp::update() {
 		tunnel.rotationAmount = _("rotationAmount");
 		tunnel.moveSpeed = _("moveSpeed");
 		tunnel.lerpViewRate = _("lerpViewRate");
+		tunnel.segmentTiming = _("segmentTiming");
 		tunnel.useTriangles = _("useTriangles");
 		if(_("randomize")) {
 			gui.setValueB("randomize", false);
@@ -44,6 +48,10 @@ void ofApp::update() {
 		gui.clearAllChanged();
 	}
 	tunnel.update();
+	if(tunnel.isSegmentNew()) {
+		midi.sendNoteOn(1, 64, 127);
+		midi.sendNoteOff(1, 64);
+	}
 }
 
 void ofApp::draw() {
