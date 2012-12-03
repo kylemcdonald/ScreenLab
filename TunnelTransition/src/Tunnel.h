@@ -1,9 +1,10 @@
 #pragma once
 
 #include "ofMain.h"
+#include "SyncedUpdatable.h"
 #include "ofAutoShader.h"
 
-class Tunnel {
+class Tunnel : public SyncedUpdatable {
 protected:
 	ofVboMesh mesh;
 	vector<ofMatrix4x4> cameraPath;
@@ -14,6 +15,8 @@ protected:
 	ofAutoShader shader;
 	
 	ofVec3f getOrientation(float t);
+	
+	void syncUpdate(float clock);
 
 public:
 	int
@@ -40,7 +43,6 @@ public:
 	Tunnel();
 	
 	void setup();
-	void update();
 	void draw();
 	void randomize();
 	

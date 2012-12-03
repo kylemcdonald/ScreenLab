@@ -73,8 +73,8 @@ void Tunnel::setup() {
 	}
 }
 
-void Tunnel::update() {
-	updateTime = ofGetElapsedTimef();
+void Tunnel::syncUpdate(float clock) {
+	updateTime = clock;
 	float segmentPosition = updateTime * moveSpeed / tunnelSeparation;
 	float remainder = fmodf(segmentPosition, 1);
 	ofMatrix4x4 curView = cameraPath[((int) segmentPosition) % cameraPath.size()];

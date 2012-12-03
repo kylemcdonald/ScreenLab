@@ -57,7 +57,7 @@ void ofApp::update() {
 		tunnel.setup();
 		gui.clearAllChanged();
 	}
-	tunnel.update();
+	tunnel.update(ofGetElapsedTimef());
 	if(tunnel.isSegmentNew()) {
 		midi.sendNoteOn(1, 64, 127);
 		midi.sendNoteOff(1, 64);
