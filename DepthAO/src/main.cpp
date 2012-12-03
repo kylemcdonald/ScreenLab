@@ -92,9 +92,9 @@ public:
 		mesh = convertFromIndices(mesh);
 		buildNormals(mesh);
 		landscape = mesh;
+		landscape.clearNormals();
 		landscapeWhite = mesh;
 		landscapeWhite.clearColors();
-		landscapeWhite.clearNormals();
     glEnable(GL_CULL_FACE);
 		glEnable(GL_DEPTH_TEST);
 	}
@@ -109,17 +109,23 @@ public:
 		ofBackground(0);
 		cam.begin();
 		ofTranslate(-w / 2, -h / 2);
+		
+		ofEnableLighting();
 		for(int i = 0; i < lights.size(); i++) {
 			lights[i].enable();
 		}
+		ofSetColor(mouseX);
 		landscapeWhite.draw();
 		for(int i = 0; i < lights.size(); i++) {
 			lights[i].disable();
 		}
+		ofDisableLighting();
+		
 		ofEnableBlendMode(OF_BLENDMODE_ADD);
+		ofSetColor(255);
+		ofTranslate(0, 0, 1);
 		landscape.draw();
 		cam.end();
-		cout << ofGetFrameRate() << endl;
 	}
 };
 
