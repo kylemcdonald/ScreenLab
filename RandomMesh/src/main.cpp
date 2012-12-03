@@ -45,12 +45,14 @@ public:
 		light.enable();
 		
 		vector<ofVec2f> points;
-		int pointCount = 800;
+		int pointCount = 256;
 		float minDistance = .5 * sqrt((ofGetWidth() * ofGetHeight()) / pointCount);
 		for(int i = 0; i < pointCount; i++) {
 			bool good = false;
 			while(!good) {
-				ofVec2f cur(ofRandomWidth(), ofRandomHeight());
+				ofVec2f cur(powf(ofRandomuf(), 8) * MIN(ofGetWidth(), ofGetHeight()) / 2, 0);
+				cur.rotate(ofRandom(360));
+				cur += ofVec2f(ofGetWidth(), ofGetHeight()) / 2;
 				good = true;
 				for(int j = 0; j < i; j++) {
 					if(cur.distance(points[j]) < minDistance) {
@@ -67,17 +69,37 @@ public:
 			delaunay.addPoint(points[i]);
 		}
 		delaunay.triangulate();
-		triangles = delaunay.triangleMesh;
+		ofMesh originalTriangles = delaunay.triangleMesh;
 		
 		// triangles are inverted
-		for(int i = 0; i < triangles.getNumIndices(); i += 3) {
-			swap(triangles.getIndices()[i + 0], triangles.getIndices()[i + 2]);
+		for(int i = 0; i < originalTriangles.getNumIndices(); i += 3) {
+			swap(originalTriangles.getIndices()[i + 0], originalTriangles.getIndices()[i + 2]);
+		}
+		
+		triangles = originalTriangles;
+		triangles.clearIndices();
+		float minAngle = 10;
+		for(int i = 0; i < originalTriangles.getNumIndices(); i += 3) {
+			int i0 = originalTriangles.getIndex(i + 0);
+			int i1 = originalTriangles.getIndex(i + 1);
+			int i2 = originalTriangles.getIndex(i + 2);
+			ofVec2f v0 = originalTriangles.getVertex(i0);
+			ofVec2f v1 = originalTriangles.getVertex(i1);
+			ofVec2f v2 = originalTriangles.getVertex(i2);
+			float a0 = (v1 - v0).angle(v2 - v0);
+			float a1 = (v2 - v1).angle(v0 - v1);
+			float a2 = (v0 - v2).angle(v1 - v2);
+			if(abs(a0) > minAngle && abs(a1) > minAngle && abs(a2) > minAngle) {
+				triangles.addIndex(i0);
+				triangles.addIndex(i1);
+				triangles.addIndex(i2);
+			}
 		}
 		
 		subtriangles = triangles;
 		subtriangles.clearIndices();
 		
-		ofColor base = ofColor(200);
+		ofColor base = ofColor(128);
 		ofColor top = ofColor(255);
 		for(int i = 0; i < subtriangles.getNumVertices(); i++) {
 			subtriangles.addColor(base);
@@ -130,7 +152,7 @@ public:
 		updateTops();
 		buildNormals(subtriangles);
 		
-		light.setPosition(mouseX, mouseY, +500);
+		light.setPosition(mouseX, mouseY, +1000);
 	}
 	
 	void updateTops() {
