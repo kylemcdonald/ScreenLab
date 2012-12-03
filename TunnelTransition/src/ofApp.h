@@ -1,5 +1,7 @@
 #pragma once
 
+//#define AUTO_SHADER
+
 #include "ofxAutoControlPanel.h"
 #include "Tunnel.h"
 #include "ofxMidi.h"

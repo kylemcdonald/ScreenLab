@@ -1,5 +1,7 @@
 #include "Tunnel.h"
 
+#include "TunnelShader.h"
+
 ofMatrix4x4 lerp(ofMatrix4x4& a, ofMatrix4x4& b, float t) {
 	ofQuaternion trot;
 	trot.slerp(t, a.getRotate(), b.getRotate());
@@ -30,7 +32,13 @@ Tunnel::Tunnel()
 }
 
 void Tunnel::setup() {
+#ifdef AUTO_SHADER
 	shader.setup("shader");
+#else
+	shader.setupShaderFromSource(GL_VERTEX_SHADER, tunnel_shader_vs);
+	shader.setupShaderFromSource(GL_FRAGMENT_SHADER, tunnel_shader_fs);
+	shader.linkProgram();
+#endif
 
 	cameraPath.clear();
 	mesh.clear();

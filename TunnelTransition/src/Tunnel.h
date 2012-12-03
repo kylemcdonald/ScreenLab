@@ -2,7 +2,10 @@
 
 #include "ofMain.h"
 #include "SyncedUpdatable.h"
+
+#ifdef AUTO_SHADER
 #include "ofAutoShader.h"
+#endif
 
 class Tunnel : public SyncedUpdatable {
 protected:
@@ -12,7 +15,11 @@ protected:
 	bool newSegment;
 	float updateTime, lastSegmentPosition;
 	
+#ifdef AUTO_SHADER
 	ofAutoShader shader;
+#else
+	ofShader shader;
+#endif
 	
 	ofVec3f getOrientation(float t);
 	
