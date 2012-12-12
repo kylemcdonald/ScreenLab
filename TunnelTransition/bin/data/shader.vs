@@ -33,7 +33,7 @@ void main() {
 	//vec4 offset = vec4(gl_Normal.xyz, 0.) * smoothStep(stretch) * pulseSize;
 	gl_Position = gl_ModelViewProjectionMatrix * (gl_Vertex);// + offset);
 	position = gl_Vertex.xyz;
-	normal = gl_Normal.xyz;
+	//normal = gl_Normal.xyz;
 
 	fogMult = 1. - clamp((gl_Position.z - fogNear) / (fogFar - fogNear), 0., 1.);
 }

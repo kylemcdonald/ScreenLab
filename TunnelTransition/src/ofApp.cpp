@@ -11,6 +11,8 @@ void ofApp::setup() {
 	
 	gui.setup(250, 900);
 	gui.addPanel("Settings");
+	gui.addToggle("randomize", false);
+	gui.addToggle("export", false);
 	gui.addSlider("tunnelLength", tunnel.tunnelLength, 0, 512, true);
 	gui.addSlider("circleResolution", tunnel.circleResolution, 1, 30, true);
 	gui.addSlider("segmentSubdivision", tunnel.segmentSubdivision, 1, 12, true);
@@ -28,11 +30,16 @@ void ofApp::setup() {
 	gui.addSlider("segmentTiming", tunnel.segmentTiming, 0, 1);
 	gui.addSlider("randomDissolve", tunnel.randomDissolve, 0, 10);
 	gui.addToggle("useTriangles", tunnel.useTriangles);
-	gui.addToggle("randomize", false);
+	
+	tunnel.setup();
 }
 
 void ofApp::update() {
 	if(gui.hasValueChangedInPanel("Settings")) {
+		if(_("export")) {
+			gui.setValueB("export", false);
+			tunnel.save("tunnel.ply");
+		}
 		tunnel.tunnelLength = _("tunnelLength");
 		tunnel.circleResolution = _("circleResolution");
 		tunnel.segmentSubdivision = _("segmentSubdivision");

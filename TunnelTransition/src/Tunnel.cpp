@@ -32,14 +32,8 @@ Tunnel::Tunnel()
 }
 
 void Tunnel::setup() {
-#ifdef AUTO_SHADER
 	shader.setup("shader");
-#else
-	shader.setupShaderFromSource(GL_VERTEX_SHADER, tunnel_shader_vs);
-	shader.setupShaderFromSource(GL_FRAGMENT_SHADER, tunnel_shader_fs);
-	shader.linkProgram();
-#endif
-
+	
 	cameraPath.clear();
 	mesh.clear();
 	mesh.setMode(OF_PRIMITIVE_LINES);
@@ -127,6 +121,22 @@ void Tunnel::randomize() {
 	rotationAmount = ofRandom(0, 25);
 	moveSpeed = ofRandom(1000, 5000);
 	useTriangles= ofRandomf() > .5;
+}
+
+void Tunnel::save(string filename) {
+	ofMesh meshSave = mesh;
+	meshSave.clearNormals();
+	meshSave.clearColors();
+	meshSave.clearTexCoords();
+	meshSave.save(filename, true);
+	
+	ofFile transforms, spline;
+	transforms.open("transforms.txt", ofFile::WriteOnly);
+	spline.open("spline.txt", ofFile::WriteOnly);
+	for(int i = 0; i < cameraPath.size(); i++) {
+		transforms << cameraPath[i] << endl;
+		spline << cameraPath[i].getTranslation() << endl;
+	}
 }
 
 ofVec3f Tunnel::getOrientation(float t) {

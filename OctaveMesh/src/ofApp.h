@@ -3,7 +3,6 @@
 #include "ofMain.h"
 
 #include "ofxAssimpModelLoader.h"
-#include "ofAutoShader.h"
 
 class ofApp : public ofBaseApp {
 public:
@@ -11,7 +10,5 @@ public:
 	void update();
 	void draw();
 	
-	ofEasyCam cam;
 	ofxAssimpModelLoader model;
-	ofAutoShader faceShader;//, wireframeShader;
 };

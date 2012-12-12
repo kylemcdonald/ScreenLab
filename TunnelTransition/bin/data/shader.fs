@@ -10,7 +10,8 @@ uniform float dissolveBlend;
 uniform float pulseBlend;
 
 varying float fogMult;
-varying vec3 position, normal;
+varying vec3 position;
+//varying vec3 normal;
 varying float randomOffset;
 varying vec2 texCoord;
 
