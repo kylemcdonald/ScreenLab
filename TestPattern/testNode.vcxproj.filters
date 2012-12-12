@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\testApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxVVVV\src\ofxVVVV\Window.cpp">
+      <Filter>addons\ofxVVVV\src\ofxVVVV</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ofxVVVV\Host.cpp">
+      <Filter>addons\ofxVVVV\src\ofxVVVV</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{71834f65-f3a9-211e-73b8-dc8563776aec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxVVVV">
+      <UniqueIdentifier>{6ab57fb6-0302-df6a-476c-5380b66bdf5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxVVVV\src">
+      <UniqueIdentifier>{16f5fd51-ab44-46ad-973a-614ee432ae25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxVVVV\src\ofxVVVV">
+      <UniqueIdentifier>{f0c47092-a488-5036-b438-275400a9f0e6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\testApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxVVVV\src\ofxVVVV\Factory.h">
+      <Filter>addons\ofxVVVV\src\ofxVVVV</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxVVVV\src\ofxVVVV\Node.h">
+      <Filter>addons\ofxVVVV\src\ofxVVVV</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxVVVV\src\ofxVVVV\Pin.h">
+      <Filter>addons\ofxVVVV\src\ofxVVVV</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxVVVV\src\ofxVVVV\Window.h">
+      <Filter>addons\ofxVVVV\src\ofxVVVV</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxVVVV\src\ofxVVVV.h">
+      <Filter>addons\ofxVVVV\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ofxVVVV\Host.h">
+      <Filter>addons\ofxVVVV\src\ofxVVVV</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
