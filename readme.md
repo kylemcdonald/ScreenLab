@@ -1,6 +1,8 @@
 # ScreenLab
 
-[ScreenLab 0x02](screenlabseries.tumblr.com) residency with Joanie Lemercier and Joel Gethin Lewis, originally developed for the Octave space at Salford University.
+[ScreenLab 0x02](screenlabseries.tumblr.com) residency with Kyle McDonald, Joanie Lemercier and Joel Gethin Lewis.
+
+This repository contains openFrameworks code, originally developed for the Octave virtual reality space at The University of Salford.
 
 For further details, check the [Tumblr](screenlabseries.tumblr.com).
 
